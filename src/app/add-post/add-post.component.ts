@@ -23,22 +23,13 @@ export class AddPostComponent {
     this.statusInputValue = event.target.value;
   }
 
-  // onStatus(event: any) {
-  //   const value = event.target.value;
-  //   if (value.length > 50) {
-  //     this.statusInputValue = value.substring(0, 50);
-  //   } else {
-  //     this.statusInputValue = value;
-  //   }
-  // }
-
   onAvatar(event: any){
     this.avatarInputValue = event.target.value;
   }
 
   addNewUser(nameValue: string, statusValue: string, avatarValue: string ) {
-    const value = {name: nameValue, status: statusValue, avatar: avatarValue,}
-    this.onUser.emit(value)
+    const value = {name: nameValue, status: statusValue.substring(0, 50), avatar: avatarValue}
+    this.onUser.emit(value);
     this.nameInputValue = '';
     this.statusInputValue = '';
     this.avatarInputValue = '';
